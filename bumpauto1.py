@@ -93,9 +93,9 @@ def start_bump():
 
         while True:
             bump_post(post1_url)
-            countdown_timer(5)  # Wait for 910 seconds (approx. 15 minutes)
+            countdown_timer(20)  # Wait for 910 seconds (approx. 15 minutes)
             bump_post(post2_url)
-            countdown_timer(5)  # Wait for 910 seconds (approx. 15 minutes)
+            countdown_timer(20)  # Wait for 910 seconds (approx. 15 minutes)
 
     bumping_thread = Thread(target=bump_thread)
     bumping_thread.start()
