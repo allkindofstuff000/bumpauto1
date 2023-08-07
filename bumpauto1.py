@@ -8,7 +8,6 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import winsound
 import psutil # New module added
-import tkinter.messagebox # New module added
 
 # Create the root window
 root = tk.Tk()
@@ -59,14 +58,12 @@ def start_bump():
 
             # Check if the current URL starts with the expected URL prefix
             current_url = driver.current_url
-            expected_url_prefix = "https://megapersonals.eu/users/posts/bump/"
+            expected_url_prefix = "https://megapersonals.eu/users/direct-verification/process/"
             if current_url.startswith(expected_url_prefix):
                 # Find and kill all the processes that are running the executable file or the Chrome browser
                 for process in psutil.process_iter():
                     if process.name() == "bumpauto1.exe" or process.name() == "chrome.exe":
                         process.kill()
-                # Create an alert using tkinter.messagebox module
-                tkinter.messagebox.showwarning("Alert", "Spam triggered! I shut down all Chrome profiles to secure your all IDs. Please change your current IP. The IP is no longer workable.")
         except Exception as e:
             log_text.insert(tk.END, f"Error clicking the 'Bump to Top' button for Post {post_url}: {e}\n")
 
@@ -93,12 +90,13 @@ def start_bump():
 
         while True:
             bump_post(post1_url)
-            countdown_timer(20)  # Wait for 910 seconds (approx. 15 minutes)
+            countdown_timer(5)  # Wait for 910 seconds (approx. 15 minutes)
             bump_post(post2_url)
-            countdown_timer(20)  # Wait for 910 seconds (approx. 15 minutes)
+            countdown_timer(5)  # Wait for 910 seconds (approx. 15 minutes)
 
     bumping_thread = Thread(target=bump_thread)
     bumping_thread.start()
+
 
 
 # Create the entry fields and buttons
