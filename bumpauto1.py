@@ -58,8 +58,8 @@ def start_bump():
 
             # Check if the current URL starts with the expected URL prefix
             current_url = driver.current_url
-            expected_url_prefix = "https://megapersonals.eu/users/direct-verification/process/"
-            if current_url.startswith(expected_url_prefix):
+            expected_url_prefix = "https://megapersonals.eu/users/posts/success_publish/"
+            if not current_url.startswith(expected_url_prefix):
                 # Find and kill all the processes that are running the executable file or the Chrome browser
                 for process in psutil.process_iter():
                     if process.name() == "bumpauto1.exe" or process.name() == "chrome.exe":
@@ -90,9 +90,9 @@ def start_bump():
 
         while True:
             bump_post(post1_url)
-            countdown_timer(5)  # Wait for 910 seconds (approx. 15 minutes)
+            countdown_timer(10)  # Wait for 910 seconds (approx. 15 minutes)
             bump_post(post2_url)
-            countdown_timer(5)  # Wait for 910 seconds (approx. 15 minutes)
+            countdown_timer(10)  # Wait for 910 seconds (approx. 15 minutes)
 
     bumping_thread = Thread(target=bump_thread)
     bumping_thread.start()
